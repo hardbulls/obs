@@ -12,3 +12,8 @@ OBS Studio assets and settings for live streams
 ## obs-multi-rtmp
 
 * https://github.com/sorayuki/obs-multi-rtmp
+
+
+## obs-browser-transition
+
+* https://github.com/exeldro/obs-browser-transition
