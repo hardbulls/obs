@@ -17,3 +17,13 @@ OBS Studio assets and settings for live streams
 ## obs-browser-transition
 
 * https://github.com/exeldro/obs-browser-transition
+
+# IP Cameras
+
+URI: `rtsp://(user):(password)@(ip):554/h265Preview_01_main`
+
+Gstreamer pipeline rtspsrc (best for low latency): `rtspsrc location="(rtsp uri)" latency=0 buffer-mode=auto ! rtph265depay ! h265parse ! avdec_h265  ! video.`
+
+Gstreamer pipeline auto: `uridecodebin uri=(rtsp uri) ! queue ! video.`
+
+Set camera Bitrate lower to avoid latency
