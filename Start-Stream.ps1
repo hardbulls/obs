@@ -2,7 +2,7 @@
 $audioDelay = 5
 $leftGain   = 0.5
 $rightGain  = 0.5
-$rtspUrl    = "rtsp://admin:xxxx@192.168.0.124:554/h265Preview_01_main"
+$rtspUrl    = "rtsp://xxx:xxxx!@192.168.0.124:554/h265Preview_01_main"
 $srtUrl     = "srt://127.0.0.1:1234?pkt_size=1316"
 $ffmpegDir  = "$PSScriptRoot\ffmpeg"
 $audioDeviceName = "Analogue 1 + 2 (Focusrite USB Audio)"  # Set your real device name here
@@ -100,5 +100,12 @@ if ($IsWindows) {
 }
 
 
+while ($true) {
+    Write-Host "`n[INFO] Starting FFmpeg process..."
+    & $ffmpegExe @ffmpegArgs
 
-& $ffmpegExe @ffmpegArgs
+    $exitCode = $LASTEXITCODE
+    Write-Host "[WARN] FFmpeg exited with code $exitCode at $(Get-Date). Restarting in 5 seconds..."
+
+    Start-Sleep -Seconds 5
+}
